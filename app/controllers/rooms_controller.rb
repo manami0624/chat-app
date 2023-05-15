@@ -1,4 +1,8 @@
 class RoomsController < ApplicationController
+
+  def inderx
+  end
+
   def new
     @room = Room.new #チャットルームの新規作成
   end
