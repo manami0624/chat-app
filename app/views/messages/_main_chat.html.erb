@@ -12,33 +12,16 @@
 </div>
 
 <div class="messages">
-  <div class="message">
-    <div class="upper-message"> 
-      <div class="message-user">Manami</div>
-      <div class="message-date">2023/1/21(wed)16:23:45</div>
-    </div>
-    <div class="lower-message">
-      <div class="message-content">おはよう</div>
-    </div>
-  </div>
-
-    <div class="message">
-    <div class="upper-message"> 
-      <div class="massage-user">Hankyol</div>
-      <div class="message-date">2023/1/21(wed)16:23:45</div>
-    </div>
-    <div class="lower-message">
-      <div class=message-content>おはよう</div>
-    </div>
-  </div>
+  <%= render partial: 'message', collection: @messages %>  <!--_message.html.erbを部分テンプレートとして、読み込む-->
 </div>
 
-<div class="form">
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
   <div class="form-input">
-  <input class="form-message" placeholder="type a message">
+    <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
   <label class="form-image">
   <span class="image-file">画像</span>
-  <input type="file" class="hidden">
+  <%= f.file_field :image, class: "hidden" %>
+  </label>
   </div>
-  <input class="form-submit" type="submit" value="送信">
-</div>
+  <%= f.submit "送信", class: 'form-submit' %>
+<% end %>
