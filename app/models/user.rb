@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true #ユーザー名が空だとエラーにさせる
+
+  has_many :room_users       #READMEからアソシエーションをコピペ
+  has_many :rooms, through: :room_users
 end
